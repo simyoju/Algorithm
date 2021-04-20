@@ -2,6 +2,7 @@ n = int(input())
 
 num = []
 sorted_num = []
+print(n)
 for _ in range(n):
     data = int(input())
     num.append(data)
