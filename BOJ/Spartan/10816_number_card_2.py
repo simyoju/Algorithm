@@ -1,21 +1,11 @@
 import sys
+from collections import Counter
+
 N = int(sys.stdin.readline())
 cards = list(map(int, sys.stdin.readline().split()))
 M = int(sys.stdin.readline())
 finded_list = list(map(int, sys.stdin.readline().split()))
 
-# result = [0 for _ in range(M)]
-result= []
+counter = Counter(cards)
 
-while finded_list:
-    std = finded_list.pop(0)
-    # print('std: ', std)
-    cnt = 0
-    for c in cards:
-        # print('c: ', c)
-        if std == c:
-           cnt += 1
-    result.append(cnt)
-
-for r in result:
-    print(r, end=' ')
+print(' '.join(str(counter[c]) if c in counter else '0' for c in finded_list))
