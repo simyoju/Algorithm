@@ -1,38 +1,43 @@
-import sys
-input = sys.stdin.readline
-str = input()
-stack = []
-cur = 1
-res = 0
+def _2504():
+    Stack = []
+    N = str(input())
 
-for i in range(len(str)):
-    if str[i] == ']' or str[i] == ')':
-        if not stack:
-            print(0)
+    cur = 1
+    res = 0
 
-    if str[i] == '(':
-        stack.append('(')
-        cur = cur * 2
-        if i + 1 < len(str) and str[i + 1] == ')':
-            res += cur
+    for i in range(len(N)):
+        if N[i] == ']' or N[i] == ')':
+            if not Stack:
+                print(0)
+                return
 
-    elif str[i] == '[':
-        stack.append('[')
-        cur = cur * 3
-        if i + 1 < len(str) and str[i + 1] == ']':
-            res += cur
+        if N[i] == '(':
+            Stack.append('(')
+            cur = cur * 2
+            if i + 1 < len(N) and N[i + 1] == ')':
+                res += cur
 
-    if stack:
-        if str[i] == ')':
-            cur = cur // 2
-            if stack[-1] == '(':
-                stack.pop()
-        elif str[i] == ']':
-            cur = cur // 3
-            if stack[-1] == '[':
-                stack.pop()
+        elif N[i] == '[':
+            Stack.append('[')
+            cur = cur * 3
+            if i + 1 < len(N) and N[i + 1] == ']':
+                res += cur
 
-if stack:
-    print(0)
+        if Stack:
+            if N[i] == ')':
+                cur = cur // 2
+                if Stack[-1] == '(':
+                    Stack.pop()
+            elif N[i] == ']':
+                cur = cur // 3
+                if Stack[-1] == '[':
+                    Stack.pop()
 
-print(res)
+    if Stack:
+        print(0)
+        return 0
+
+    print(res)
+
+
+_2504()
