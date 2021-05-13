@@ -1,3 +1,4 @@
+# https://has3ong.tistory.com/495
 def _2504():
     Stack = []
     N = str(input())
