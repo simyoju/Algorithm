@@ -1,14 +1,17 @@
-def solution(n):
-    answer = 1
-
+def isPrime(n):
     for i in range(2, n+1):
-        cnt = 0
-        if i % 2 == 1:
-            for j in range(2, i+1):
-                if i%j == 0:
-                    cnt += 1
-        if cnt == 1:
+        if i*i <= n:
+            if n%i == 0:
+                return False
+    return True
+
+
+def solution(n):
+    answer = 0
+    for i in range(2, n+1):
+        if isPrime(i) == True:
             answer += 1
+            #print(i)
     return answer
 
-print(solution(n=101))
+print(solution(n=10))
